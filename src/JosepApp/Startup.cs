@@ -1,18 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using JosepApp.Business.ExampleManagement.Service;
-using JosepApp.Domain.Context;
+using JosepApp.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace JosepApp
 {
@@ -29,9 +20,8 @@ namespace JosepApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<IExampleService, ExampleService>();
-
-            services.AddDbContext<ExampleContext>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
+            services.ConfigureApp(Configuration);
+            //services.AddDbContext<ExampleContext>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +36,7 @@ namespace JosepApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
