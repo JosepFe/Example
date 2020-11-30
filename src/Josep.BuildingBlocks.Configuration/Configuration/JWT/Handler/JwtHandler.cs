@@ -1,5 +1,6 @@
 ﻿using JosepApp.BuildingBlocks.Configuration.Common.Options.JWT;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,11 @@ namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler
         public JwtHandler(JwtOptions jwtOptions)
         {
             JwtOptions = jwtOptions;
+        }
+
+        public JwtHandler(IOptions<JwtOptions> jwtOptions)
+        {
+            JwtOptions = jwtOptions.Value;
         }
 
         public string CreateToken(List<Claim> clientClaims)
@@ -58,16 +64,26 @@ namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ValidatePostNLRequirement requirement)
         {
-            if (!context.User.HasClaim(c => c.Issuer == "Josep" && c.Type == "Example"))
+            // var claims = context.User.Claims.ToArray();
+
+            if (!context.User.HasClaim(c => c.Issuer == "Josep" && c.Type == "DocumentTypes"))
             {
+                context.Fail();
                 return Task.CompletedTask;
             }
 
-            if (!int.TryParse(context.User.FindFirst(c => c.Issuer == "Josep" && c.Type == "Example").Value, out int value))
-            {
-                context.Succeed(requirement);
-            }
+            //if (!context.User.HasClaim(c => c.Issuer == "Josep" && c.Type == "Example"))
+            //{
+            //    context.Fail();
+            //    return Task.CompletedTask;
+            //}
 
+            //if (!int.TryParse(context.User.FindFirst(c => c.Issuer == "Josep" && c.Type == "Example").Value, out int value))
+            //{
+            //    context.Succeed(requirement);
+            //}
+
+            context.Succeed(requirement);
             return Task.CompletedTask;
         }
     }

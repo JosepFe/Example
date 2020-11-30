@@ -1,4 +1,6 @@
-﻿namespace JosepApp.BuildingBlocks.Configuration.Common.Options.JWT
+﻿using System.Collections.Generic;
+
+namespace JosepApp.BuildingBlocks.Configuration.Common.Options.JWT
 {
     public class JwtOptions
     {
@@ -9,5 +11,6 @@
         public bool ValidateLifetime { get; set; }
         public string SecretKey { get; set; }
         public int ClockSkew { get; set; }
+        public List<string> DocumentTypes { get; set; }
     }
 }

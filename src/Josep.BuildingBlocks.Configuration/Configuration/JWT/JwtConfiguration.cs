@@ -2,6 +2,7 @@
 using JosepApp.BuildingBlocks.Configuration.Common.Options.JWT;
 using JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -45,8 +46,10 @@ namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("PostNL", policy => policy.RequireClaim("example"));
+                options.AddPolicy("PostNL", policy => policy.Requirements.Add(new ValidatePostNLRequirement(123)));
             });
+
+            services.AddSingleton<IAuthorizationHandler, JwtHandler>();
         }
     }
 }
