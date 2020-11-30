@@ -1,4 +1,4 @@
-﻿namespace JosepApp.Common.Options.JWT
+﻿namespace JosepApp.BuildingBlocks.Configuration.Common.Options.JWT
 {
     public class JwtOptions
     {

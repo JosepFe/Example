@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JosepApp.Domain.Entities
+namespace JosepApp.Implementation.Domain.Entities
 {
     public class Example
     {

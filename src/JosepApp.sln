@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JosepApp", "JosepApp\JosepApp.csproj", "{6CEF3B47-DDB8-479A-A154-28FD6DE8459E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JosepApp", "JosepApp\JosepApp.csproj", "{6CEF3B47-DDB8-479A-A154-28FD6DE8459E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JosepApp.Implementation", "JosepApp.Implementation\JosepApp.Implementation.csproj", "{90DC2172-181E-420D-9612-92E1E8BCFAEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JosepApp.BuildingBlocks.Configuration", "Josep.BuildingBlocks.Configuration\JosepApp.BuildingBlocks.Configuration.csproj", "{7DFDB245-57E8-4E4F-B8AB-3251E9C9B204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{6CEF3B47-DDB8-479A-A154-28FD6DE8459E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CEF3B47-DDB8-479A-A154-28FD6DE8459E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CEF3B47-DDB8-479A-A154-28FD6DE8459E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DC2172-181E-420D-9612-92E1E8BCFAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DC2172-181E-420D-9612-92E1E8BCFAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DC2172-181E-420D-9612-92E1E8BCFAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DC2172-181E-420D-9612-92E1E8BCFAEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DFDB245-57E8-4E4F-B8AB-3251E9C9B204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DFDB245-57E8-4E4F-B8AB-3251E9C9B204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DFDB245-57E8-4E4F-B8AB-3251E9C9B204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DFDB245-57E8-4E4F-B8AB-3251E9C9B204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

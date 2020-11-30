@@ -1,12 +1,7 @@
-﻿using JosepApp.Domain.Entities;
+﻿using JosepApp.Implementation.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
-namespace JosepApp.Domain.Context
+namespace JosepApp.Implementation.Domain.Context
 {
     public class ExampleContext: DbContext
     {

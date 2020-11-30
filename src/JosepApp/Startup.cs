@@ -1,4 +1,5 @@
-using JosepApp.Configuration;
+using JosepApp.BuildingBlocks.Configuration.Configuration;
+using JosepApp.Implementation.Business.ExampleManagement.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +22,8 @@ namespace JosepApp
         {
             services.AddControllers();
             services.ConfigureApp(Configuration);
+
+            services.AddTransient<IExampleService, ExampleService>();
             //services.AddDbContext<ExampleContext>(options => options.UseSqlite(Configuration.GetConnectionString("Default")));
         }
 

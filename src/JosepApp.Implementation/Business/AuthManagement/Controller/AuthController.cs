@@ -1,10 +1,10 @@
-﻿using JosepApp.Configuration.JWT.Handler;
+﻿using JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace JosepApp.Business.AuthManagement.Controller
+namespace JosepApp.Implementation.Business.AuthManagement.Controller
 {
     [Route("[controller]")]
     public class AuthController : ControllerBase
@@ -17,18 +17,24 @@ namespace JosepApp.Business.AuthManagement.Controller
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Policy = "PostNL")]
         [Route("ping")]
         public IActionResult Ping()
         {
-            return Ok();
+            //var claims = _jwtHandler.GetUserClaims(Request.Headers);
+            //if (!claims)
+            //{
+            //    Unauthorized();
+            //}
+
+            return Ok("pong");
         }
 
         [HttpGet]
         [Route("login")]
         public IActionResult Login()
         {
-            List<Claim> claims = new List<Claim>();
+            List<Claim> claims = new List<Claim> { new Claim("example", "123")};
             var tokenString = _jwtHandler.CreateToken(claims);
             return Ok(tokenString);
         }

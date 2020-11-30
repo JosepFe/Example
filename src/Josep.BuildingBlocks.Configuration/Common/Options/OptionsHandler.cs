@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace JosepApp.Common.Options
+namespace JosepApp.BuildingBlocks.Configuration.Common.Options
 {
     public static class OptionsHandler
     {

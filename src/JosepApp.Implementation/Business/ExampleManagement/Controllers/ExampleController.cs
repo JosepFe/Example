@@ -1,8 +1,8 @@
-﻿using JosepApp.Business.ExampleManagement.Service;
+﻿using JosepApp.Implementation.Business.ExampleManagement.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace JosepApp.Business.ExampleManagement.Controllers
+namespace JosepApp.Implementation.Business.ExampleManagement.Controllers
 {
     [ApiController]
     [Route("[controller]")]

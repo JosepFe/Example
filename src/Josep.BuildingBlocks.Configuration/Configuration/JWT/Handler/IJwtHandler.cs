@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace JosepApp.Configuration.JWT.Handler
+namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler
 {
     public interface IJwtHandler
     {

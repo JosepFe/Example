@@ -1,4 +1,5 @@
-﻿using JosepApp.Common.Options.JWT;
+﻿using JosepApp.BuildingBlocks.Configuration.Common.Options.JWT;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace JosepApp.Configuration.JWT.Handler
+namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler
 {
-    public class JwtHandler : IJwtHandler
+    public class JwtHandler : AuthorizationHandler<ValidatePostNLRequirement>, IJwtHandler
     {
         private JwtOptions JwtOptions { get; }
         private static SecurityKey SecurityKey { get; set; }
@@ -52,6 +54,21 @@ namespace JosepApp.Configuration.JWT.Handler
                 }, out _);
 
             return claimsPrincipal.Claims.ToList();
+        }
+
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, ValidatePostNLRequirement requirement)
+        {
+            if (!context.User.HasClaim(c => c.Issuer == "Josep" && c.Type == "Example"))
+            {
+                return Task.CompletedTask;
+            }
+
+            if (!int.TryParse(context.User.FindFirst(c => c.Issuer == "Josep" && c.Type == "Example").Value, out int value))
+            {
+                context.Succeed(requirement);
+            }
+
+            return Task.CompletedTask;
         }
     }
 }

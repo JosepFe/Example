@@ -1,13 +1,13 @@
-﻿using JosepApp.Common.Options;
-using JosepApp.Common.Options.JWT;
-using JosepApp.Configuration.JWT.Handler;
+﻿using JosepApp.BuildingBlocks.Configuration.Common.Options;
+using JosepApp.BuildingBlocks.Configuration.Common.Options.JWT;
+using JosepApp.BuildingBlocks.Configuration.Configuration.JWT.Handler;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace JosepApp.Configuration.JWT
+namespace JosepApp.BuildingBlocks.Configuration.Configuration.JWT
 {
     public static class JwtConfiguration
     {
@@ -41,6 +41,11 @@ namespace JosepApp.Configuration.JWT
                     ValidIssuer = jwtOptions.Issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SecretKey))
                 };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("PostNL", policy => policy.RequireClaim("example"));
             });
         }
     }
